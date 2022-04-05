@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 const res = require('express/lib/response');
 
 const defaultResponse = (data, statusCode = 200) => ({
@@ -7,6 +8,7 @@ const defaultResponse = (data, statusCode = 200) => ({
 
 const errorResponse = (message, statusCode = 400) => ({
   error: message,
+// eslint-disable-next-line no-sequences
 }, statusCode);
 
 class BooksController {

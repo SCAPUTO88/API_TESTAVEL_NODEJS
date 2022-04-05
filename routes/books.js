@@ -1,11 +1,14 @@
 const BooksController = require('../controllers/books');
 
 module.exports = (app, Books) => {
+  const booksController = new BooksController(app.datasource.models.Books);
   app.route('/books')
     .get((req, res) => {
-      Books.findAll({})
-        .then((result) => res.json(result))
-        .catch(() => res.status(412));
+      booksController.getAll()
+        .then(response => {
+          res.status(response.statusCode);
+          res.json(response.data);
+        });
     });
 
   app.route('/books')
